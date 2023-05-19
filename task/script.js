@@ -87,6 +87,24 @@ const primeNumbers = findPrimes(numbers);
 
 console.log(primeNumbers);
 
+//Arrow function
+const isPrimeArrow = (num) => {
+  if (num < 2) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+
+  function findPrimes(array) {
+    return array.filter((num) => isPrimeArrow(num));
+  }
+};
+const primeNumbersArrow = findPrimes(numbers);
+
+console.log(primeNumbersArrow);
+
 // === Task-5 Return all the palindromes in an array ====
 let array5 = ["abc", "cool", "aba", "racecar", "dog"];
 function findPalindrome(arr) {
@@ -99,3 +117,45 @@ function findPalindrome(arr) {
   console.log(ans); // output : aba racecar
 }
 findPalindrome(array5);
+
+// === Task-6 Convert all the strings to title caps in a string array
+let strings = ["gopi", "sandy", "dharsh"];
+
+// split charAt(0).toUppercase()+slpit(1)
+function caps(strings) {
+  let titleCase = strings.map((ele) => {
+    let toLowerCase = ele.toLowerCase();
+    let charAt = toLowerCase.charAt(0).toUpperCase();
+    return charAt + toLowerCase.slice(1);
+  });
+  console.log(titleCase);
+}
+caps(strings);
+
+//arrow function
+const capsArrow = (strings) => {
+  let titleCase = strings.map((ele) => {
+    let toLowerCase = ele.toLowerCase();
+    let charAt = toLowerCase.charAt(0).toUpperCase();
+    return charAt + toLowerCase.slice(1);
+  });
+  console.log(titleCase);
+};
+capsArrow(strings);
+
+// Task-7 Return median of two sorted arrays of the same size.
+let nums1 = [1, 12, 15, 26, 38];
+let nums2 = [2, 13, 17, 30, 45];
+var median = 0;
+let merge = nums1.concat(nums2);
+let sort = merge.sort(function (a, b) {
+  return a - b;
+});
+if (sort.length % 2 !== 0) {
+  median = sort[Math.floor(sort.length / 2)];
+} else {
+  var mid = sort.length / 2;
+  median = (sort[mid - 1] + sort[mid]) / 2;
+}
+console.log(sort[mid]);
+console.log(median);

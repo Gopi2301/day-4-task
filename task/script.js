@@ -1,71 +1,101 @@
-// // // =================  TASK 1  ===================
-var obj1 ={
-    name:'person1',
-    age:5
-}
+// =============== ODD NUMBER TASK -1 ===========================
+// == anonymous function ===
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var result = [];
 
-var obj2 ={
-    name:'person1',
-    age:5
-}
-
-var per1 = JSON.stringify(obj1);
-var per2 = JSON.stringify(obj2);
-
-if (per1== per2){
-    console.log("The above objects are same")
-} else{
-    console.log("The above objects are not same")
-
-}
-// OUTPUT
-// // The above objects are same
-
-
-// // ====================  TASK 2 (Country FLag) =======================
-var url = "https://restcountries.com/v3.1/all"
-var request = new XMLHttpRequest();
-request.open("GET", url)
-request.send()
-request.onload= function(){
-    var data = request.response
-    var result= JSON.parse(data)
-
-    for ( var i=0; i<result.length; i++){
-        // console.log(result[i].flags)
+var odd = function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 != 0) {
+      result.push(arr[i]);
     }
+  }
+  return result;
+};
+console.log(odd(arr));
 
-}
+// Arrow function
 
-// OUTPUT
-//  {png: 'https://flagcdn.com/w320/ar.png', svg: 'https://flagcdn.com/ar.svg'}
-//  {png: 'https://flagcdn.com/w320/se.png', svg: 'https://flagcdn.com/se.svg'}
-//  {png: 'https://flagcdn.com/w320/mv.png', svg: 'https://flagcdn.com/mv.svg'}
-//  {png: 'https://flagcdn.com/w320/mx.png', svg: 'https://flagcdn.com/mx.svg'}
-//  {png: 'https://flagcdn.com/w320/nz.png', svg: 'https://flagcdn.com/nz.svg'}
-//  {png: 'https://flagcdn.com/w320/ec.png', svg: 'https://flagcdn.com/ec.svg'}
-//  {png: 'https://flagcdn.com/w320/aw.png', svg: 'https://flagcdn.com/aw.svg'}
-//  {png: 'https://flagcdn.com/w320/wf.png', svg: 'https://flagcdn.com/wf.svg'}
-//  {png: 'https://flagcdn.com/w320/ax.png', svg: 'https://flagcdn.com/ax.svg'}
-
-//================= TASK 3 ====================
-
-var req =new XMLHttpRequest();
-req.open("GET",url)
-req.send()
-req.onload =function(){
-    var data = req.response
-    var result = JSON.parse(data)
-    for( var i=0; i<result.length; i++){
-        var apidata = result[i];
-        console.log(apidata.name.common + ' '+ apidata.region + ' '+ apidata.subregion)
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var result = [];
+var odd = (arr) => {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 != 0) {
+      result.push(arr[i]);
     }
-}
-// OUTPUT
-// Mauritania Africa Western Africa
-// script.js:61 Aruba Americas Caribbean
-// script.js:61 Argentina Americas South America
-// script.js:61 Sweden Europe Northern Europe
-// script.js:61 Maldives Asia Southern Asia
-// script.js:61 Mexico Americas North America
+  }
+  return result;
+};
+console.log(odd(arr));
 
+// =========== SUM NUMBER TASK -2 ==============================
+// anonymous function
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var res = 0;
+
+var output = function (arr) {
+  for (var i = 0; i < arr.length; i++) {
+    res += arr[i];
+  }
+  console.log(res);
+};
+output(array);
+//   Arrow Function
+var array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var res1 = 0;
+var sum = () => {
+  for (var i = 0; i < array1.length; i++) {
+    res1 += array1[i];
+  }
+  console.log(res1);
+};
+sum(array1);
+
+//  ============= REMOVE DUPLICATE TASK -3 ========================
+// anonymous function
+let char = ["A", "B", "A", "B", "C", "A"];
+var removeDuplicate = function (arr) {
+  let unique = [...new Set(arr)];
+  console.log(unique);
+};
+removeDuplicate(char);
+
+//  Arrow function
+let chars = ["A", "B", "A", "C", "B"];
+
+let uniqueChars = chars.filter((c, index) => {
+  return chars.indexOf(c) === index;
+});
+console.log(uniqueChars);
+
+// ============ Return all the prime numbers in an array TASK-4 =================
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13];
+function isPrime(num) {
+  if (num < 2) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function findPrimes(array) {
+  return array.filter((num) => isPrime(num));
+}
+
+const primeNumbers = findPrimes(numbers);
+
+console.log(primeNumbers);
+
+// === Task-5 Return all the palindromes in an array ====
+let array5 = ["abc", "cool", "aba", "racecar", "dog"];
+function findPalindrome(arr) {
+  var ans = arr.filter((ele) => {
+    var rev = ele.split("").reverse().join("");
+    if (ele === rev) {
+      return ele;
+    }
+  });
+  console.log(ans); // output : aba racecar
+}
+findPalindrome(array5);
